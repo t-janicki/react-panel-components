@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import {
+	Router,
+	Switch,
+	Route,
+	Redirect
+} from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
+import { useEffect, useState } from "react";
+import authenticationService from "./services/authentication.service";
+import { Role } from "./shared/Role";
+import HomeComponent from "./components/HomeComponent";
+import LoginComponent from "./components/LoginComponent";
+import AdminComponent from "./components/AdminComponent";
+import { Auth } from "./services/Auth";
+import PreferencesComponent from "./components/PreferencesComponent";
+import history from "./history";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = (): JSX.Element => {
+	const [currentUser, setCurrentUser] = useState(null);
+
+	useEffect(() => {
+		authenticationService.currentUser.subscribe(user => {
+			setCurrentUser(user)
+		})
+	});
+
+	console.log('app current user value')
+	console.log(currentUser)
+	return (<>
+			<Auth>
+				<Router history={history}>
+					<Switch>
+						<Route exact path='/' component={() => <Redirect to='/home'/>}/>
+						<Route exact path='/home' component={HomeComponent}/>
+						<Route exact path='/login' component={LoginComponent}/>
+						<Route exact path='/preferences' component={PreferencesComponent}/>
+						<PrivateRoute exact path='/admin' roles={[Role.Admin]} Component={AdminComponent}/>
+						{currentUser && <>
+                            <div>
+								MENU ========================================================================================================================
+                            </div> </>}
+					</Switch>
+				</Router>
+			</Auth>
+		</>
+	)
+};
 
 export default App;
