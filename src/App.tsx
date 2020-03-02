@@ -15,6 +15,7 @@ import AdminComponent from "./components/AdminComponent";
 import { Auth } from "./services/Auth";
 import PreferencesComponent from "./components/PreferencesComponent";
 import history from "./history";
+import Layout from "./layout/Layout";
 
 const App: React.FC = (): JSX.Element => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -32,14 +33,10 @@ const App: React.FC = (): JSX.Element => {
 				<Router history={history}>
 					<Switch>
 						<Route exact path='/' component={() => <Redirect to='/home'/>}/>
-						<Route exact path='/home' component={HomeComponent}/>
-						<Route exact path='/login' component={LoginComponent}/>
-						<Route exact path='/preferences' component={PreferencesComponent}/>
-						<PrivateRoute exact path='/admin' roles={[Role.Admin]} Component={AdminComponent}/>
-						{currentUser && <>
-                            <div>
-								MENU ========================================================================================================================
-                            </div> </>}
+						<Route exact path='/home' component={Layout}/>
+						{/*<Route exact path='/login' component={LoginComponent}/>*/}
+						{/*<Route exact path='/preferences' component={PreferencesComponent}/>*/}
+						{/*<PrivateRoute exact path='/admin' roles={[Role.Admin]} Component={AdminComponent}/>*/}
 					</Switch>
 				</Router>
 			</Auth>
