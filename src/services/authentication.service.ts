@@ -79,7 +79,7 @@ const login = async (username: string, password: string) => {
 const logout = () => {
 	localStorage.removeItem('currentUser');
 	currentUserSubject.next(null!);
-	history.push('/home');
+	history.push('/');
 };
 
 const authenticationService = {

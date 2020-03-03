@@ -29,7 +29,7 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 				   }
 				   if (roles && roles.indexOf(currentUser.role) === -1) {
 					   console.log('redirect to home')
-					   return <Redirect to={{pathname: '/home'}}/>
+					   return <Redirect to={{pathname: '/'}}/>
 				   }
 				   return <Component {...props} />
 			   }}/>

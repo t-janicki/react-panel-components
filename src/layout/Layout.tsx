@@ -23,9 +23,9 @@ const Layout: React.FC = (): JSX.Element => {
 			<main className={classes.content}>
 				<div className={classes.toolbar}/>
 				<Switch>
-					<Route path='/login' component={LoginComponent}/>
-					<Route path='/preferences' component={PreferencesComponent}/>
-					<Route path="/typography" component={TypographyPage} />
+					<Route exact path='/login' component={LoginComponent}/>
+					<Route exact path='preferences' component={PreferencesComponent}/>
+					<Route exact path="/typography" component={TypographyPage} />
 					<PrivateRoute path='/admin' roles={[Role.Admin]} Component={AdminComponent}/>
 				</Switch>
 			</main>
@@ -33,4 +33,4 @@ const Layout: React.FC = (): JSX.Element => {
 	</>
 };
 
-export default withRouter(Layout);
+export default Layout

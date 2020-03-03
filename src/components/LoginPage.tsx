@@ -8,7 +8,7 @@ class LoginPage extends React.Component {
 
     onSubmit = (username: string, password: string) => {
         authenticationService.login(username, password);
-        history.push('/home')
+        history.push('/')
     };
 
     render() {
