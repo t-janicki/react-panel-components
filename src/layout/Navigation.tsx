@@ -79,6 +79,10 @@ const Navigation: React.FC<Props> = ({theme, classes}) => {
 			</div>
 			<Divider/>
 			<List>
+				<ListItem button component={Link} to='/login'>
+					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
+					<ListItemText>Login</ListItemText>
+				</ListItem>
 				<ListItem button component={Link} to='/home'>
 					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
 					<ListItemText>Home</ListItemText>

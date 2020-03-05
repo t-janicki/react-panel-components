@@ -13,7 +13,7 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 	// }, []);
 
 	const currentUser = {
-		role: 'Admin'
+		role: 'User'
 	}
 
 	console.log(currentUser)
@@ -37,7 +37,7 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 };
 
 interface Props {
-	Component: React.FC<RouteComponentProps>
+	Component: React.FC<RouteComponentProps> | React.ComponentType<any>
 	path: string,
 	exact?: boolean,
 	roles: string[]

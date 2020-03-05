@@ -26,34 +26,12 @@ const userInfo = async () => {
 	}
 };
 
-const saveSessionToken = (token: Token): void => {
-	const now = new Date().getTime();
-	const expiration = new Date(now + token.expires_in * 1000);
-
-
-	const session = {
-		access_token: token.access_token,
-		refresh_token: token.refresh_token,
-		duration: token.expires_in,
-		expires_at: expiration
-	};
-
-	console.log('in session token')
-
-	console.log(session)
-	session['expires_at'] = new Date(
-		new Date().getTime() + session['duration'] * 1000
-	);
-
-	// this.session = session;
-};
-
-const login = async (username: string, password: string) => {
+const login = async (email: string, password: string) => {
 	const body = new FormData();
 	body.append('grant_type', 'password');
-	body.append('username', username);
+	body.append('username', email);
 	body.append('password', password);
-
+	console.log(email)
 	const config = {
 		auth: {
 			username: "client",
@@ -79,7 +57,7 @@ const login = async (username: string, password: string) => {
 const logout = () => {
 	localStorage.removeItem('currentUser');
 	currentUserSubject.next(null!);
-	history.push('/');
+	history.push('/app');
 };
 
 const authenticationService = {
