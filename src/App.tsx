@@ -14,13 +14,15 @@ const App: React.FC = (): JSX.Element => {
 	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
-		authenticationService.currentUser.subscribe(user => {
-			setCurrentUser(user)
-		})
+		// authenticationService.currentUser.subscribe(user => {
+		// 	setCurrentUser(user)
+		// })
+
 	});
 
-	console.log('app current user value')
-	console.log(currentUser)
+	console.log(authenticationService.currentUserValue)
+	// console.log('app current user value')
+	// console.log(currentUser)
 	return (<>
 			<Auth>
 				<Router>

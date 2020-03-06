@@ -3,7 +3,6 @@ import Navigation from "./Navigation";
 import useLayoutStyles from "./LayoutStyles";
 import { useTheme } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
-import LoginComponent from "../components/login/LoginComponent";
 import PreferencesComponent from "../components/PreferencesComponent";
 import { Role } from "../shared/Role";
 import AdminComponent from "../components/AdminComponent";
@@ -26,16 +25,14 @@ const Layout: React.FC = (): JSX.Element => {
 					<Route exact path='/home'>
 						<HomeComponent/>
 					</Route>
-					{/*<Route exact path='/login'>*/}
-					{/*	<LoginComponent/>*/}
-					{/*</Route>*/}
 					<Route exact path='/preferences'>
 						<PreferencesComponent/>
 					</Route>
 					<Route exact path="/typography">
 						<TypographyPage/>
 					</Route>
-					<PrivateRoute path='/admin' roles={[Role.Admin]} Component={AdminComponent}/>
+					<PrivateRoute path='/admin' roles={[Role.Admin, Role.User]} Component={AdminComponent}/>
+					<PrivateRoute path='/user' roles={[Role.User]} Component={HomeComponent}/>
 				</Switch>
 			</main>
 		</div>

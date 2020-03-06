@@ -16,7 +16,7 @@ const userInfo = async () => {
 					'Authorization': `Bearer ${token}`
 				},
 			});
-			console.log(result)
+			// console.log(result)
 			return result;
 		} catch (e) {
 			console.log(e.response)
@@ -57,7 +57,7 @@ const login = async (email: string, password: string) => {
 const logout = () => {
 	localStorage.removeItem('currentUser');
 	currentUserSubject.next(null!);
-	history.push('/app');
+	history.push('/login');
 };
 
 const authenticationService = {

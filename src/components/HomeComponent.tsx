@@ -4,7 +4,7 @@ const HomeComponent: React.FC = (): JSX.Element => {
 
 	return <>
 		<div>
-			Home page component
+			HOME PAGE
 		</div>
 	</>
 };

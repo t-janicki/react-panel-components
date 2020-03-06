@@ -99,6 +99,10 @@ const Navigation: React.FC<Props> = ({theme, classes}) => {
 					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
 					<ListItemText>Admin</ListItemText>
 				</ListItem>
+				<ListItem button component={Link} to='/user'>
+					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
+					<ListItemText>User</ListItemText>
+				</ListItem>
 			</List>
 		</Drawer>
 	</>
