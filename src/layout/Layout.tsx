@@ -26,9 +26,9 @@ const Layout: React.FC = (): JSX.Element => {
 					<Route exact path='/home'>
 						<HomeComponent/>
 					</Route>
-					<Route exact path='/login'>
-						<LoginComponent/>
-					</Route>
+					{/*<Route exact path='/login'>*/}
+					{/*	<LoginComponent/>*/}
+					{/*</Route>*/}
 					<Route exact path='/preferences'>
 						<PreferencesComponent/>
 					</Route>

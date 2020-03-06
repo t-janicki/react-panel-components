@@ -24,8 +24,8 @@ interface FormValues {
 }
 
 const initialValues: FormValues = {
-	email: '',
-	password: ''
+	email: 'user@imagene.me',
+	password: 'useruser'
 };
 
 const LoginPage: React.FC = () => {

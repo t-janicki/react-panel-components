@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import authenticationService from "./services/authentication.service";
 import { Auth } from "./services/Auth";
 import Layout from "./layout/Layout";
+import LoginComponent from "./components/login/LoginComponent";
 
 const App: React.FC = (): JSX.Element => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -24,10 +25,12 @@ const App: React.FC = (): JSX.Element => {
 			<Auth>
 				<Router>
 					<Switch>
+						<Route exact path='/login'>
+							<LoginComponent/>
+						</Route>
 						<Route path='/'>
 							<Layout/>
 						</Route>
-						{/*<Route exact path='/login' component={LoginComponent}/>*/}
 					</Switch>
 				</Router>
 			</Auth>
