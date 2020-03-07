@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import authenticationService from "./services/authentication.service";
-import { Auth } from "./services/Auth";
 import Layout from "./layout/Layout";
 import LoginComponent from "./components/login/LoginComponent";
+import { AuthComponent } from "./services/auth.component";
 
 const App: React.FC = (): JSX.Element => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -24,7 +24,7 @@ const App: React.FC = (): JSX.Element => {
 	// console.log('app current user value')
 	// console.log(currentUser)
 	return (<>
-			<Auth>
+			<AuthComponent>
 				<Router>
 					<Switch>
 						<Route exact path='/login'>
@@ -35,7 +35,7 @@ const App: React.FC = (): JSX.Element => {
 						</Route>
 					</Switch>
 				</Router>
-			</Auth>
+			</AuthComponent>
 		</>
 	)
 };

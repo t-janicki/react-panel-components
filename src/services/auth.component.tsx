@@ -1,12 +1,13 @@
 import * as React from 'react'
 import authenticationService from "../services/authentication.service";
 import axios, { AxiosResponse } from 'axios'
+import authService from "./auth.service";
 
 interface State {
 	waitAuthCheck: boolean
 }
 
-export class Auth extends React.PureComponent<{}, State> {
+export class AuthComponent extends React.PureComponent<{}, State> {
 	constructor(props: Readonly<{}>) {
 		super(props);
 
@@ -29,8 +30,9 @@ export class Auth extends React.PureComponent<{}, State> {
 	// };
 
 	currentUser = () => {
-		authenticationService.userInfo()
+		authService.userInfo()
 			.then((response) => {
+				console.log(response)
 				authenticationService.currentUserSubject.next(response.data)
 				// console.log(authenticationService.currentUserValue)
 			})
