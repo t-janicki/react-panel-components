@@ -18,12 +18,12 @@ class AuthService {
 
 		const config = {
 			auth: {
-				username: "client",
-				password: "secret"
+				username: "admin",
+				password: "supersecretsecret"
 			},
 		};
 
-		axios.post<Token>('http://localhost:8080/oauth/token', body, config)
+		axios.post<Token>('/oauth/token', body, config)
 			.then(response => {
 
 				tokenService.saveToken(response.data);
@@ -34,8 +34,6 @@ class AuthService {
 				currentUserSubject.next(response.data);
 			})
 			.catch(err => console.log(err))
-
-		// };
 	};
 
 	logout = () => {
@@ -44,20 +42,50 @@ class AuthService {
 		history.push('/login');
 	};
 
+	refreshToken = () => {
+		const config = {
+			auth: {
+				username: "admin",
+				password: "supersecretsecret"
+			},
+		};
+
+		const body = new FormData();
+		body.append('grant_type', 'refresh_token');
+		body.append('scope', 'read write');
+		body.append('refresh_token', tokenService.getRefreshToken());
+
+		axios.post<Token>('/oauth/token', body, config)
+			.then(response => {
+				tokenService.saveToken(response.data)
+			})
+			.catch(e => {
+				if (e.response.status === 400) {
+					console.log(e)
+				}
+			})
+	};
+
+	isAuthenticated = (): boolean => {
+		const expiresAt = tokenService.getExpiredAt();
+		return new Date().getTime() < expiresAt;
+	};
+
 	userInfo = async () => {
 		const token = tokenService.getToken();
 
 		if (token) {
 			try {
-				const result = await axios.get<User>('http://localhost:8080/api/auth/info', {
+				const result = await axios.get<User>('/api/auth/info', {
 					headers: {
 						'Authorization': `Bearer ${token}`
 					},
 				});
-
+				console.log(result)
 				return result;
 			} catch (e) {
-				console.log(e.response)
+				// catch 400 and set currentUser null?
+				console.log(e)
 			}
 		}
 	};

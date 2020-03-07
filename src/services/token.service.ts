@@ -1,30 +1,34 @@
 import { Token } from "./token.model";
 
-
 class TokenService {
 
-	saveToken = (token: Token) => {
-		const now = new Date().getTime();
-		const expiration = new Date(now + token.expires_in * 1000);
+	saveToken = (token: Token): void => {
+		let expiresAt = JSON.stringify((token.expires_in * 1000) + new Date().getTime());
 
 		const session = {
 			access_token: token.access_token,
 			refresh_token: token.refresh_token,
-			duration: token.expires_in,
-			expires_at: expiration
+			expires_in: token.expires_in,
+			expires_at: expiresAt
 		};
-
-		session['expires_at'] = new Date(
-			new Date().getTime() + session['duration'] * 1000
-		);
 
 		localStorage.setItem('currentUser', JSON.stringify(session))
 	};
 
+	getExpiredAt = (): number => {
+		const token = JSON.parse(localStorage.getItem('currentUser'));
+		return token ? token.expires_at : null;
+	};
+
 	getToken = (): string => {
 		const token = JSON.parse(localStorage.getItem('currentUser'));
-		return token.access_token;
-	}
+		return token ? token.access_token : null;
+	};
+
+	getRefreshToken = (): string => {
+		const token = (JSON.parse(localStorage.getItem('currentUser')));
+		return token ? token.refresh_token : null;
+	};
 }
 
 const tokenService = new TokenService();

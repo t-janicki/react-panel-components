@@ -10,7 +10,7 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 
 	/// ADD CLEAN UP RETURN setCurrentUser(null)
 	useEffect(() => {
-		setCurrentUser(authenticationService.currentUserValue)
+		setCurrentUser(authenticationService.currentUserValue);
 		setIsLoading(false)
 	}, []);
 
@@ -19,9 +19,11 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 				<Route exact={exact}
 					   path={path}
 					   render={(props: RouteComponentProps) => {
+					   	   // Not logged in then redirect to login
 						   if (!currentUser) {
 							   return <Redirect to={{pathname: '/login', state: {from: props.location}}}/>
 						   }
+						   // Role not authorized then redirect
 						   if (roles && roles.some(v => currentUser.roles.indexOf(v) < 0)) {
 							   return <Redirect to={{pathname: '/'}}/>
 						   }

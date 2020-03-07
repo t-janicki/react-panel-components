@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues: Credentials = {
-	email: 'user@imagene.me',
+	email: 'admin@email.com',
 	password: 'useruser'
 };
 
