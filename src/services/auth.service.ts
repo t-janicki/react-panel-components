@@ -18,35 +18,45 @@ class AuthService {
 
 		const config = {
 			auth: {
-				username: "admin",
-				password: "supersecretsecret"
+				username: "client",
+				password: "secret"
 			},
 		};
 
 		axios.post<Token>('/oauth/token', body, config)
 			.then(response => {
-
 				tokenService.saveToken(response.data);
-
 				return this.userInfo()
 			})
-			.then(response => {
-				currentUserSubject.next(response.data);
+			.then(data => {
+				currentUserSubject.next(data);
 			})
 			.catch(err => console.log(err))
 	};
 
 	logout = () => {
-		localStorage.removeItem('currentUser');
-		currentUserSubject.next(null!);
-		history.push('/login');
+		const token = tokenService.getToken();
+		axios.put('/oauth/logout', {}, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+		})
+			.then(response => {
+				console.log(response)
+			})
+		// .then(() => {
+		// 	console.log('remove token')
+		// 	localStorage.removeItem('currentUser');
+		// 	currentUserSubject.next(null!);
+		// 	history.push('/login');
+		// })
 	};
 
 	refreshToken = () => {
 		const config = {
 			auth: {
-				username: "admin",
-				password: "supersecretsecret"
+				username: "client",
+				password: "secret"
 			},
 		};
 
@@ -61,7 +71,8 @@ class AuthService {
 			})
 			.catch(e => {
 				if (e.response.status === 400) {
-					console.log(e)
+					tokenService.removeToken();
+					history.push('/')
 				}
 			})
 	};
@@ -75,20 +86,15 @@ class AuthService {
 		const token = tokenService.getToken();
 
 		if (token) {
-			try {
-				const result = await axios.get<User>('/api/auth/info', {
+				return await axios.get<User>('/api/auth/info', {
 					headers: {
 						'Authorization': `Bearer ${token}`
 					},
-				});
-				console.log(result)
-				return result;
-			} catch (e) {
-				// catch 400 and set currentUser null?
-				console.log(e)
-			}
+				})
+					.then(response => { return response.data })
+					.catch(e => { console.log(e) });
 		}
-	};
+	}
 }
 
 const authService = new AuthService();

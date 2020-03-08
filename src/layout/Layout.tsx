@@ -4,7 +4,7 @@ import useLayoutStyles from "./LayoutStyles";
 import { useTheme } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import PreferencesComponent from "../components/PreferencesComponent";
-import { Role } from "../shared/Role";
+import { Role } from "../shared/role";
 import AdminComponent from "../components/AdminComponent";
 import PrivateRoute from "../components/PrivateRoute";
 import TypographyPage from "../components/TypographyPage";

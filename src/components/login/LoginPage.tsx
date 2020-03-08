@@ -10,7 +10,7 @@ import {
 	TextField,
 	Typography
 } from "@material-ui/core";
-import { useLoginStyles } from "./LoginStyles";
+import { useLoginStyles } from "./login.styles";
 import authService from '../../services/auth.service'
 import { Credentials } from "../../services/credentials.model";
 
@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues: Credentials = {
-	email: 'admin@email.com',
+	email: 'user@email.com',
 	password: 'useruser'
 };
 
@@ -28,10 +28,8 @@ const LoginPage: React.FC = () => {
 	const classes = useLoginStyles();
 
 	const onSubmit = (credentials: Credentials) => {
-		console.log(credentials)
 
 		authService.login(credentials);
-
 		history.push('/')
 	};
 

@@ -15,6 +15,10 @@ class TokenService {
 		localStorage.setItem('currentUser', JSON.stringify(session))
 	};
 
+	removeToken = (): void => {
+		localStorage.removeItem('currentUser')
+	};
+
 	getExpiredAt = (): number => {
 		const token = JSON.parse(localStorage.getItem('currentUser'));
 		return token ? token.expires_at : null;

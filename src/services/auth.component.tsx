@@ -1,8 +1,9 @@
 import * as React from 'react'
 import authenticationService from "../services/authentication.service";
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import authService from "./auth.service";
-import { Token } from "./token.model";
+import tokenService from "./token.service";
+import Loader from "../shared/loader";
 
 interface State {
 	waitAuthCheck: boolean
@@ -36,17 +37,15 @@ export class AuthComponent extends React.PureComponent<{}, State> {
 	    // this.saveFakeToken();
 		// authService.refreshToken();
 
-		axios.interceptors.response.use((response: AxiosResponse) => {
+		axios.interceptors.response.use((response) => {
 	        return Promise.resolve(response);
 	    }, err => {
 	    	return new Promise(() => {
 	    		console.log(err.response);
 
-	    		if (err.response.status === 401) {
+	    		if (err.response.status === 401 && tokenService.getRefreshToken()) {
 	    			console.log('trying refresh token');
 					authService.refreshToken();
-				} else if (err.response.status === 401 && !authService.isAuthenticated()) {
-	    			console.log('test')
 				}
 	    		throw err
 			})
@@ -54,10 +53,11 @@ export class AuthComponent extends React.PureComponent<{}, State> {
 	    })
 	};
 
-	currentUser = () => {
-		authService.userInfo()
-			.then((response) => {
-				authenticationService.currentUserSubject.next(response.data)
+	currentUser = async () => {
+		// this.saveFakeToken()
+		await authService.userInfo()
+			.then(user => {
+				authenticationService.currentUserSubject.next(user)
 			})
             .catch(error => {
 				console.log(error)
@@ -70,6 +70,6 @@ export class AuthComponent extends React.PureComponent<{}, State> {
 	}
 
 	render() {
-		return this.state.waitAuthCheck ? <div> LOADING... </div> : <React.Fragment children={this.props.children}/>;
+		return this.state.waitAuthCheck ? <Loader/> : <React.Fragment children={this.props.children}/>;
 	}
 }

@@ -24,7 +24,7 @@ interface Props {
 }
 
 const Navigation: React.FC<Props> = ({theme, classes}) => {
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = React.useState(true);
 
 	const handleDrawerClose = () => {
 		setOpen(false);

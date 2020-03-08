@@ -1,6 +1,6 @@
 import * as React from "react";
 import {
-	BrowserRouter as Router,
+	Router,
 	Switch,
 	Route
 } from "react-router-dom";
@@ -9,6 +9,7 @@ import authenticationService from "./services/authentication.service";
 import Layout from "./layout/Layout";
 import LoginComponent from "./components/login/LoginComponent";
 import { AuthComponent } from "./services/auth.component";
+import history from "./history";
 
 const App: React.FC = (): JSX.Element => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -25,7 +26,7 @@ const App: React.FC = (): JSX.Element => {
 	// console.log(currentUser)
 	return (<>
 			<AuthComponent>
-				<Router>
+				<Router history={history}>
 					<Switch>
 						<Route exact path='/login'>
 							<LoginComponent/>

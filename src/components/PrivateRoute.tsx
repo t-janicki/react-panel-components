@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import authenticationService from "../services/authentication.service";
+import Loader from "../shared/loader";
 
 const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 	const [currentUser, setCurrentUser] = useState(null);
@@ -15,7 +16,7 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 	}, []);
 
 	return (<>
-			{isLoading ? <div>LOADING...</div> :
+			{isLoading ? <Loader/> :
 				<Route exact={exact}
 					   path={path}
 					   render={(props: RouteComponentProps) => {
