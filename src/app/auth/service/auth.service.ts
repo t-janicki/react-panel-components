@@ -4,7 +4,7 @@ import { User } from "../../user/model/user.model";
 import tokenService from "./token.service";
 import history from "../../../history";
 import { Credentials } from "../model/credentials.model";
-import authenticationService from "../../authentication.service";
+import UserStore from '../../user/store/user.store';
 
 class AuthService {
 
@@ -26,8 +26,8 @@ class AuthService {
 				tokenService.saveToken(response.data);
 				return this.userInfo()
 			})
-			.then(data => {
-				authenticationService.currentUserSubject.next(data);
+			.then(user => {
+				UserStore.setCurrentUserSubject(user)
 			})
 			.catch(err => console.log(err))
 	};

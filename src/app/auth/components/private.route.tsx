@@ -2,16 +2,16 @@ import * as React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router-dom'
 import { useEffect, useState } from "react";
-import authenticationService from "../../authentication.service";
 import Loader from "../../shared/loader";
+import UserStore from '../../user/store/user.store'
 
 const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		setCurrentUser(authenticationService.currentUserValue);
-		setIsLoading(false)
+		setCurrentUser(UserStore.getCurrentUser());
+		setIsLoading(false);
 		return () => {
 			setCurrentUser(null)
 		}

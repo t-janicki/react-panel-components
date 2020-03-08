@@ -1,5 +1,5 @@
 import * as React from 'react'
-import authenticationService from "../../authentication.service";
+import UserStore from '../../user/store/user.store'
 import axios from 'axios'
 import { Loader } from "../../shared";
 import {
@@ -57,7 +57,7 @@ class AuthContainer extends React.PureComponent<{}, State> {
 		// this.saveFakeToken()
 		await AuthService.userInfo()
 			.then(user => {
-				authenticationService.currentUserSubject.next(user)
+				UserStore.setCurrentUserSubject(user)
 			})
 			.catch(error => {
 				console.log(error)
@@ -66,7 +66,7 @@ class AuthContainer extends React.PureComponent<{}, State> {
 	};
 
 	componentWillUnmount(): void {
-		authenticationService.currentUserSubject.unsubscribe();
+		UserStore.cancelSubscription();
 	}
 
 	render() {
