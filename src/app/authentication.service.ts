@@ -1,8 +1,8 @@
 import { BehaviorSubject } from "rxjs";
 import axios from 'axios'
 import history from "../history";
-import { Token } from "./token.model";
-import { User } from "./user.model";
+import { Token } from "./auth/model/token.model";
+import { User } from "./user/model/user.model";
 
 const currentUserSubject = new BehaviorSubject(null);
 

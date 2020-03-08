@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup'
-import history from "../../history";
+import history from "../../../history";
 import {
 	Button,
 	Container,
@@ -11,8 +11,8 @@ import {
 	Typography
 } from "@material-ui/core";
 import { useLoginStyles } from "./login.styles";
-import authService from '../../services/auth.service'
-import { Credentials } from "../../services/credentials.model";
+import { Credentials } from "../model/credentials.model";
+import { AuthService} from "../";
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required('Email is required'),
@@ -24,12 +24,12 @@ const initialValues: Credentials = {
 	password: 'useruser'
 };
 
-const LoginPage: React.FC = () => {
+const LoginContainer: React.FC = () => {
 	const classes = useLoginStyles();
 
 	const onSubmit = (credentials: Credentials) => {
 
-		authService.login(credentials);
+		AuthService.login(credentials);
 		history.push('/')
 	};
 
@@ -108,4 +108,4 @@ const LoginPage: React.FC = () => {
 	)
 };
 
-export default LoginPage;
+export default LoginContainer;

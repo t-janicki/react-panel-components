@@ -1,4 +1,4 @@
-import { Token } from "./token.model";
+import { Token } from "../model/token.model";
 
 class TokenService {
 

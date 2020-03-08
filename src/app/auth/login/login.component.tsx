@@ -1,11 +1,9 @@
 import * as React from 'react'
-import LoginPage from "./LoginPage";
+import LoginContainer from "./login.container";
 
 const LoginComponent: React.FC = () => {
 	return (<>
-		<div>
-			<LoginPage/>
-		</div>
+		<LoginContainer/>
 	</>)
 };
 

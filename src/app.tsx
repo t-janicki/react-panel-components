@@ -5,13 +5,15 @@ import {
 	Route
 } from "react-router-dom";
 import { useEffect, useState } from "react";
-import authenticationService from "./services/authentication.service";
-import Layout from "./layout/Layout";
-import LoginComponent from "./components/login/LoginComponent";
-import { AuthComponent } from "./services/auth.component";
+import authenticationService from "./app/authentication.service";
 import history from "./history";
+import {
+	Auth,
+	LoginComponent
+} from "./app/auth";
+import { Layout } from "./app/layout";
 
-const App: React.FC = (): JSX.Element => {
+const App: React.FC = () => {
 	const [currentUser, setCurrentUser] = useState(null);
 
 	useEffect(() => {
@@ -21,11 +23,12 @@ const App: React.FC = (): JSX.Element => {
 
 	});
 
+	//create user store
 	console.log(authenticationService.currentUserValue)
 	// console.log('app current user value')
 	// console.log(currentUser)
 	return (<>
-			<AuthComponent>
+			<Auth>
 				<Router history={history}>
 					<Switch>
 						<Route exact path='/login'>
@@ -36,7 +39,7 @@ const App: React.FC = (): JSX.Element => {
 						</Route>
 					</Switch>
 				</Router>
-			</AuthComponent>
+			</Auth>
 		</>
 	)
 };

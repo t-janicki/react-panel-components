@@ -1,7 +1,6 @@
 import * as React from 'react'
 
-const HomeComponent: React.FC = (): JSX.Element => {
-
+const HomeComponent: React.FC = () => {
 	return <>
 		<div>
 			HOME PAGE

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-const AdminComponent: React.FC = (): JSX.Element => {
+const AdminComponent: React.FC = () => {
 	return <>
 		<div>
 			ADMIN PAGE

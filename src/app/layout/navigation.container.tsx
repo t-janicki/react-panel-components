@@ -23,7 +23,7 @@ interface Props {
 	classes: any
 }
 
-const Navigation: React.FC<Props> = ({theme, classes}) => {
+const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 	const [open, setOpen] = React.useState(true);
 
 	const handleDrawerClose = () => {
@@ -108,4 +108,4 @@ const Navigation: React.FC<Props> = ({theme, classes}) => {
 	</>
 };
 
-export default Navigation
+export default NavigationContainer

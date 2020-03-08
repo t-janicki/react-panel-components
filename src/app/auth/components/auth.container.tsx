@@ -1,15 +1,17 @@
 import * as React from 'react'
-import authenticationService from "../services/authentication.service";
+import authenticationService from "../../authentication.service";
 import axios from 'axios'
-import authService from "./auth.service";
-import tokenService from "./token.service";
-import Loader from "../shared/loader";
+import { Loader } from "../../shared";
+import {
+	TokenService,
+	AuthService
+} from "../";
 
 interface State {
 	waitAuthCheck: boolean
 }
 
-export class AuthComponent extends React.PureComponent<{}, State> {
+class AuthContainer extends React.PureComponent<{}, State> {
 	constructor(props: Readonly<{}>) {
 		super(props);
 
@@ -33,36 +35,34 @@ export class AuthComponent extends React.PureComponent<{}, State> {
 	};
 
 	init = () => {
-	    console.log('interceptor');
-	    // this.saveFakeToken();
-		// authService.refreshToken();
+		console.log('interceptor');
 
 		axios.interceptors.response.use((response) => {
-	        return Promise.resolve(response);
-	    }, err => {
-	    	return new Promise(() => {
-	    		console.log(err.response);
+			return Promise.resolve(response);
+		}, err => {
+			return new Promise(() => {
+				console.log(err.response);
 
-	    		if (err.response.status === 401 && tokenService.getRefreshToken()) {
-	    			console.log('trying refresh token');
-					authService.refreshToken();
+				if (err.response.status === 401 && TokenService.getRefreshToken()) {
+					console.log('trying refresh token');
+					AuthService.refreshToken();
 				}
-	    		throw err
+				throw err
 			})
 
-	    })
+		})
 	};
 
 	currentUser = async () => {
 		// this.saveFakeToken()
-		await authService.userInfo()
+		await AuthService.userInfo()
 			.then(user => {
 				authenticationService.currentUserSubject.next(user)
 			})
-            .catch(error => {
+			.catch(error => {
 				console.log(error)
-            })
-            .finally(() => this.setState({waitAuthCheck: false}))
+			})
+			.finally(() => this.setState({waitAuthCheck: false}))
 	};
 
 	componentWillUnmount(): void {
@@ -73,3 +73,5 @@ export class AuthComponent extends React.PureComponent<{}, State> {
 		return this.state.waitAuthCheck ? <Loader/> : <React.Fragment children={this.props.children}/>;
 	}
 }
+
+export default AuthContainer;

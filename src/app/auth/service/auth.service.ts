@@ -1,12 +1,10 @@
 import axios from "axios";
-import { Token } from "./token.model";
-import { BehaviorSubject } from "rxjs";
-import { User } from "./user.model";
+import { Token } from "../model/token.model";
+import { User } from "../../user/model/user.model";
 import tokenService from "./token.service";
-import history from "../history";
-import { Credentials } from "./credentials.model";
-
-const currentUserSubject = new BehaviorSubject(null);
+import history from "../../../history";
+import { Credentials } from "../model/credentials.model";
+import authenticationService from "../../authentication.service";
 
 class AuthService {
 
@@ -29,7 +27,7 @@ class AuthService {
 				return this.userInfo()
 			})
 			.then(data => {
-				currentUserSubject.next(data);
+				authenticationService.currentUserSubject.next(data);
 			})
 			.catch(err => console.log(err))
 	};
