@@ -8,7 +8,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { Link } from "react-router-dom";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ListItemText from "@material-ui/core/ListItemText";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,6 +16,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import { Theme } from "@material-ui/core";
+import { mainNavigationRoutes } from "./main.navigation.routes";
+import { menuIcon } from "./main.navigation.icons";
 
 interface Props {
 	theme: Theme,
@@ -35,7 +36,7 @@ const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 	};
 
 	return <>
-		<CssBaseline />
+		<CssBaseline/>
 		<AppBar
 			position="fixed"
 			className={clsx(classes.appBar, {
@@ -52,10 +53,10 @@ const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 						[classes.hide]: open,
 					})}
 				>
-					<MenuIcon />
+					<MenuIcon/>
 				</IconButton>
 				<Typography variant="h6" noWrap>
-					Mini variant drawer
+					Welcome
 				</Typography>
 			</Toolbar>
 		</AppBar>
@@ -79,30 +80,12 @@ const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 			</div>
 			<Divider/>
 			<List>
-				<ListItem button component={Link} to='/login'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>Login</ListItemText>
-				</ListItem>
-				<ListItem button component={Link} to='/home'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>Home</ListItemText>
-				</ListItem>
-				<ListItem button component={Link} to='/typography'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>Typography</ListItemText>
-				</ListItem>
-				<ListItem button component={Link} to='/preferences'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>Preferences</ListItemText>
-				</ListItem>
-				<ListItem button component={Link} to='/admin'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>Admin</ListItemText>
-				</ListItem>
-				<ListItem button component={Link} to='/user'>
-					<ListItemIcon><SupervisorAccountIcon/></ListItemIcon>
-					<ListItemText>User</ListItemText>
-				</ListItem>
+				{mainNavigationRoutes.map((value, index) =>
+					<ListItem key={index} button component={Link} to={value.path}>
+						<ListItemIcon>{menuIcon(value.icon)}</ListItemIcon>
+						<ListItemText>{value.name}</ListItemText>
+					</ListItem>
+				)}
 			</List>
 		</Drawer>
 	</>
