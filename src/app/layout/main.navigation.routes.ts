@@ -2,31 +2,37 @@ export const mainNavigationRoutes = [
 	{
 		path: '/login',
 		name: 'Login',
-		icon: 'LOGIN'
+		icon: 'LOGIN',
+		roles: ['']
 	},
 	{
 		path: '/home',
 		name: 'Home',
-		icon: 'HOME'
+		icon: 'HOME',
+		roles: ['']
 	},
 	{
 		path: '/typography',
 		name: 'Typography',
-		icon: 'FONT'
+		icon: 'FONT',
+		roles: ['']
 	},
 	{
 		path: '/preferences',
 		name: 'Preferences',
-		icon: 'SETTINGS'
+		icon: 'SETTINGS',
+		roles: ['']
 	},
 	{
 		path: '/admin',
 		name: 'Admin',
-		icon: 'ADMIN'
+		icon: 'ADMIN',
+		roles: ['Admin']
 	},
 	{
 		path: '/user',
 		name: 'User',
-		icon: 'USER'
+		icon: 'USER',
+		roles: ['User']
 	}
 ];

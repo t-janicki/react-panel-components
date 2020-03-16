@@ -18,6 +18,7 @@ import Typography from "@material-ui/core/Typography";
 import { Theme } from "@material-ui/core";
 import { mainNavigationRoutes } from "./main.navigation.routes";
 import { menuIcon } from "./main.navigation.icons";
+import { useState } from "react";
 
 interface Props {
 	theme: Theme,
@@ -26,6 +27,7 @@ interface Props {
 
 const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 	const [open, setOpen] = React.useState(true);
+	const [currentUser, setCurrentUser] = useState(null);
 
 	const handleDrawerClose = () => {
 		setOpen(false);
@@ -34,6 +36,17 @@ const NavigationContainer: React.FC<Props> = ({theme, classes}) => {
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
+
+	// TO FIX
+	// useEffect(() => {
+	// 	const subscription = UserStore.getCurrentUserSubject()
+	// 		.subscribe(user => {
+	// 			setCurrentUser(user)
+	// 		});
+	// 	return subscription.unsubscribe;
+	// }, []);
+	//
+	// console.log(currentUser)
 
 	return <>
 		<CssBaseline/>

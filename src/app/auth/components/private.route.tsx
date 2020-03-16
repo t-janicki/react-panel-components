@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router-dom'
-import { useEffect, useState } from "react";
-import Loader from "../../shared/loader";
+import { useEffect, useState } from "react"
+import Loader from "../../shared/loader"
 import UserStore from '../../user/store/user.store'
 
 const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
@@ -10,10 +10,14 @@ const PrivateRoute = ({Component, path, exact = false, roles}: Props) => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		setCurrentUser(UserStore.getCurrentUser());
+		const subscription = UserStore.getCurrentUserSubject()
+			.subscribe(user => {
+				setCurrentUser(user)
+		});
 		setIsLoading(false);
 		return () => {
-			setCurrentUser(null)
+			setCurrentUser(null);
+			subscription.unsubscribe();
 		}
 	}, []);
 

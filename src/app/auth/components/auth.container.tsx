@@ -41,8 +41,7 @@ class AuthContainer extends React.PureComponent<{}, State> {
 			return Promise.resolve(response);
 		}, err => {
 			return new Promise(() => {
-				console.log(err.response);
-
+				//TO FIX
 				if (err.response.status === 401 && TokenService.getRefreshToken()) {
 					console.log('trying refresh token');
 					AuthService.refreshToken();
@@ -53,11 +52,11 @@ class AuthContainer extends React.PureComponent<{}, State> {
 		})
 	};
 
-	currentUser = async () => {
+	currentUser = () => {
 		// this.saveFakeToken()
-		await AuthService.userInfo()
+		AuthService.userInfo()
 			.then(user => {
-				UserStore.setCurrentUserSubject(user)
+				UserStore.setCurrentUserSubject(user);
 			})
 			.catch(error => {
 				console.log(error)

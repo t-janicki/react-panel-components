@@ -4,17 +4,11 @@ import { User } from "../model/user.model";
 class UserStore {
 	private currentUserSubject = new BehaviorSubject(null);
 
-	setCurrentUserSubject = (user: User | void) => {
-		this.currentUserSubject.next(user);
-	};
+	setCurrentUserSubject = (user: User | void) => this.currentUserSubject.next(user);
 
-	getCurrentUser = (): User => {
-		return this.currentUserSubject.value;
-	};
+	getCurrentUserSubject = () => this.currentUserSubject.asObservable();
 
-	cancelSubscription = () => {
-		this.currentUserSubject.unsubscribe();
-	}
+	cancelSubscription = () => this.currentUserSubject.unsubscribe();
 }
 
 const userStore = new UserStore();
