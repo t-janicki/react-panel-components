@@ -12,6 +12,12 @@ export const mainNavigationRoutes = [
 		roles: ['']
 	},
 	{
+		path: '/card',
+		name: 'Card',
+		icon: 'HOME',
+		roles: ['']
+	},
+	{
 		path: '/typography',
 		name: 'Typography',
 		icon: 'FONT',

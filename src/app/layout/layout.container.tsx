@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { Role } from "../auth/model/role";
 import useLayoutStyles from "./layout.styles";
 import {
-	AdminComponent,
+	AdminComponent, CardComponent,
 	HomeComponent,
 	PreferencesComponent,
 	TypographyComponent,
@@ -27,6 +27,9 @@ const LayoutContainer: React.FC = () => {
 				<Switch>
 					<Route exact path='/home'>
 						<HomeComponent/>
+					</Route>
+					<Route exact path='/card'>
+						<CardComponent/>
 					</Route>
 					<Route exact path='/preferences'>
 						<PreferencesComponent/>
