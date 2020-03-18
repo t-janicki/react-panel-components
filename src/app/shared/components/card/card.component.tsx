@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
 	Card,
 	Typography,
-	Icon,
 	CardContent,
 	Divider,
 	CardActions,
@@ -10,42 +9,40 @@ import {
 	LinearProgress,
 	useTheme,
 	createStyles,
-	Theme, CardHeader, Avatar, IconButton
+	Theme, CardHeader,
+	IconButton,
+	Chip
 } from "@material-ui/core";
 import clsx from 'clsx';
 import { makeStyles } from "@material-ui/core/styles";
-import { green, blue } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 import { AccessAlarm, FavoriteBorder } from "@material-ui/icons";
-import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
 
 interface Course {
 	id: string
 	title: string
-	slug: string
+	subTitle: string
 	description: string
 	category: string
 	length: number
 	totalSteps: number
 	activeStep: number
 	updated: string
-	steps: any
 	favorite: boolean
 }
 
 const course: Course = {
 	id: '15459251a6d6b397565',
-	title: 'Spring Security',
-	slug: 'basics-of-angular',
+	title: 'Spring',
+	subTitle: 'REST API',
 	description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 	category: 'web',
 	length: 30,
 	totalSteps: 11,
 	activeStep: 4,
 	updated: 'Jun 28, 2017',
-	steps: null,
 	favorite: true
 };
 
@@ -56,32 +53,21 @@ const useCardStyle = {
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
-			maxWidth: 345,
+			maxWidth: 300,
 		},
-		media: {
-			height: 0,
-			paddingTop: '56.25%', // 16:9
-		},
-		expand: {
-			transform: 'rotate(0deg)',
+		button: {
 			marginLeft: 'auto',
-			transition: theme.transitions.create('transform', {
-				duration: theme.transitions.duration.shortest,
-			}),
 		},
-		expandOpen: {
-			transform: 'rotate(180deg)',
-		},
-		avatar: {
-			backgroundColor: blue[500],
-		},
+		extendedIcon: {
+			marginRight: theme.spacing(1),
+		}
 	}),
 );
 
 const CardComponent: React.FC = () => {
 	const classes = useStyles();
 	const theme = useTheme();
-	const [favorite, setFavorite] = useState<boolean>(false);
+	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
 	const buttonStatus = (course: Course) => {
 		switch (course.activeStep) {
@@ -95,50 +81,48 @@ const CardComponent: React.FC = () => {
 	};
 
 	useEffect(() => {
-		setFavorite(course.favorite)
-	},[]);
+		setIsFavorite(course.favorite)
+	}, []);
 
 	return <>
 		<div>
-			<Card className={classes.root}>
+			<Card raised elevation={4} className={classes.root}>
 				<CardHeader
 					avatar={
-						<Avatar>R</Avatar>
+						<Chip
+							label="100/500 points"
+							size="small"
+						/>
 					}
 					style={{
 						background: useCardStyle.color,
-						minHeight: '4vw',
+						maxHeight: '5vw',
 						color: theme.palette.getContrastText(useCardStyle.color)
 					}}
 					action={
-						<>
-							{/*<IconButton aria-label="settings">*/}
-							<AccessAlarm aria-label="settings"/>
-							<Typography>
-								{`~ ${course.length} min`}
-							</Typography>
-							{/*</IconButton>*/}
-						</>
+                        <Chip
+                            size="small"
+                            label={`${course.length} min`}
+                            icon={<AccessAlarm/>}
+                        />
 					}
-					title={course.title}
-					// subheader={course.updated}
 				/>
 				<CardContent>
-					<Typography>
-						{course.title}
+					<Typography gutterBottom variant="h5" component="h2">
+						{course.subTitle}
 					</Typography>
 					<Typography>
-						{course.updated}
+						{course.description}
 					</Typography>
 				</CardContent>
 				<Divider/>
 				<CardActions disableSpacing>
 					<IconButton
 						aria-label="add to favorites"
-						onClick={() => setFavorite(!favorite)}>
-						{favorite ? <FavoriteIcon/> : <FavoriteBorder/>}
+						onClick={() => setIsFavorite(!isFavorite)}>
+						{isFavorite ? <FavoriteIcon/> : <FavoriteBorder/>}
 					</IconButton>
-					<Button className={clsx(classes.expand)}>
+					<Button className={clsx(classes.button)}>
 						{buttonStatus(course)}
 					</Button>
 				</CardActions>
