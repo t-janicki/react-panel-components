@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import clsx from 'clsx';
 import { makeStyles } from "@material-ui/core/styles";
-import { blue, green, red, yellow } from "@material-ui/core/colors";
+import { amber, blue, blueGrey, green, grey, indigo, orange, red, yellow } from "@material-ui/core/colors";
 import { AccessAlarm, FavoriteBorder } from "@material-ui/icons";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useEffect, useState } from "react";
@@ -63,15 +63,15 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 	const cardHeaderBackground = () => {
 		switch (category) {
 			case 'WEB':
-				return red[500];
+				return red[700];
 			case 'REACT':
-				return blue[500];
+				return indigo[700];
 			case 'SPRING':
-				return green[500];
+				return green[700];
 			case 'JAVA':
-				return yellow[500];
+				return amber[700];
 			default:
-				return green[500];
+				return grey[700];
 		}
 	};
 
