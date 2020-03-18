@@ -24,7 +24,7 @@ import { Course } from "./course.model";
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
-			maxWidth: 300,
+			maxWidth: 450
 		},
 		button: {
 			marginLeft: 'auto',
@@ -63,15 +63,15 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 	const cardHeaderBackground = () => {
 		switch (category) {
 			case 'WEB':
-				return red[700];
+				return red[600];
 			case 'REACT':
-				return indigo[700];
+				return indigo[600];
 			case 'SPRING':
-				return green[700];
+				return green[600];
 			case 'JAVA':
-				return amber[700];
+				return amber[600];
 			default:
-				return grey[700];
+				return grey[600];
 		}
 	};
 
@@ -86,12 +86,12 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 					avatar={
 						<Chip
 							label={`${earnedPoints}/${totalPoints}`}
-							size="small"
+							size="medium"
 						/>
 					}
 					style={{
 						background: cardHeaderBackground(),
-						maxHeight: '5vw',
+						height: '4vw',
 						color: theme.palette.getContrastText(cardHeaderBackground())
 					}}
 					action={
@@ -102,7 +102,7 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 						/>
 					}
 				/>
-				<CardContent>
+				<CardContent style={{height: '17vw'}}>
 					<Typography gutterBottom variant="h5" component="h2">
 						{subTitle}
 					</Typography>

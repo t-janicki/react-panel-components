@@ -36,7 +36,7 @@ const CourseCardLayout: React.FC = () => {
 				))}
 			</Grid>
 			<Grid container justify="center">
-				<PaginationComponent totalPages={courses.length}/>
+				<PaginationComponent totalPages={2}/>
 			</Grid>
 		</div>
 	);
