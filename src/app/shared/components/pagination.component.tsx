@@ -10,12 +10,25 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const PaginationComponent: React.FC = () => {
+interface Props {
+	totalPages: number,
+}
+
+const PaginationComponent: React.FC<Props> = ({totalPages}) => {
 	const classes = useStyles();
+	const [currentPage, setCurrentPage] = React.useState(1);
+	const handleChange = (event: Event, value: number) => {
+		setCurrentPage(value);
+	};
 
 	return (
 		<div className={classes.root}>
-			<Pagination count={10} variant="outlined" shape="rounded" />
+			<Pagination count={totalPages}
+						page={currentPage}
+						onChange={handleChange}
+						defaultPage={1}
+						variant="outlined"
+						shape="rounded" />
 		</div>
 	);
 };

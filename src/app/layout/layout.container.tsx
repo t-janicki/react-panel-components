@@ -6,8 +6,8 @@ import { Role } from "../auth/model/role";
 import useLayoutStyles from "./layout.styles";
 import {
 	AdminComponent,
-	CardComponent,
-	CardLayout,
+	CourseCardComponent,
+	CourseCardLayout,
 	HomeComponent,
 	PreferencesComponent,
 	TypographyComponent,
@@ -30,11 +30,11 @@ const LayoutContainer: React.FC = () => {
 					<Route exact path='/home'>
 						<HomeComponent/>
 					</Route>
-					<Route exact path='/card'>
-						<CardComponent/>
-					</Route>
+					{/*<Route exact path='/card'>*/}
+					{/*	<CourseCardComponent/>*/}
+					{/*</Route>*/}
 					<Route exact path='/card-layout'>
-						<CardLayout/>
+						<CourseCardLayout/>
 					</Route>
 					<Route exact path='/preferences'>
 						<PreferencesComponent/>

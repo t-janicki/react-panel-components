@@ -15,40 +15,11 @@ import {
 } from "@material-ui/core";
 import clsx from 'clsx';
 import { makeStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
+import { blue, green, red, yellow } from "@material-ui/core/colors";
 import { AccessAlarm, FavoriteBorder } from "@material-ui/icons";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useEffect, useState } from "react";
-
-interface Course {
-	id: string
-	title: string
-	subTitle: string
-	description: string
-	category: string
-	length: number
-	totalSteps: number
-	activeStep: number
-	updated: string
-	favorite: boolean
-}
-
-const course: Course = {
-	id: '15459251a6d6b397565',
-	title: 'Spring',
-	subTitle: 'REST API',
-	description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-	category: 'web',
-	length: 30,
-	totalSteps: 11,
-	activeStep: 4,
-	updated: 'Jun 28, 2017',
-	favorite: true
-};
-
-const useCardStyle = {
-	color: green[500]
-};
+import { Course } from "./course.model";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -64,14 +35,23 @@ const useStyles = makeStyles((theme: Theme) =>
 	}),
 );
 
-const CardComponent: React.FC = () => {
+interface Props {
+	course: Course
+}
+
+const CourseCardComponent: React.FC<Props> = ({course}) => {
+	const {
+		id, title, subTitle, description, category, totalPoints,
+		earnedPoints, length, totalSteps, activeStep, updated, favorite
+	} = course;
+
 	const classes = useStyles();
 	const theme = useTheme();
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-	const buttonStatus = (course: Course) => {
-		switch (course.activeStep) {
-			case course.totalSteps:
+	const buttonStatus = () => {
+		switch (activeStep) {
+			case totalSteps:
 				return 'COMPLETED';
 			case 0:
 				return 'START';
@@ -80,9 +60,24 @@ const CardComponent: React.FC = () => {
 		}
 	};
 
+	const cardHeaderBackground = () => {
+		switch (category) {
+			case 'WEB':
+				return red[500];
+			case 'REACT':
+				return blue[500];
+			case 'SPRING':
+				return green[500];
+			case 'JAVA':
+				return yellow[500];
+			default:
+				return green[500];
+		}
+	};
+
 	useEffect(() => {
-		setIsFavorite(course.favorite)
-	}, []);
+		setIsFavorite(favorite)
+	}, [favorite]);
 
 	return <>
 		<div>
@@ -90,29 +85,29 @@ const CardComponent: React.FC = () => {
 				<CardHeader
 					avatar={
 						<Chip
-							label="100/500 points"
+							label={`${earnedPoints}/${totalPoints}`}
 							size="small"
 						/>
 					}
 					style={{
-						background: useCardStyle.color,
+						background: cardHeaderBackground(),
 						maxHeight: '5vw',
-						color: theme.palette.getContrastText(useCardStyle.color)
+						color: theme.palette.getContrastText(cardHeaderBackground())
 					}}
 					action={
-                        <Chip
-                            size="small"
-                            label={`${course.length} min`}
-                            icon={<AccessAlarm/>}
-                        />
+						<Chip
+							size="small"
+							label={`${length} min`}
+							icon={<AccessAlarm/>}
+						/>
 					}
 				/>
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="h2">
-						{course.subTitle}
+						{subTitle}
 					</Typography>
 					<Typography>
-						{course.description}
+						{description}
 					</Typography>
 				</CardContent>
 				<Divider/>
@@ -123,16 +118,16 @@ const CardComponent: React.FC = () => {
 						{isFavorite ? <FavoriteIcon/> : <FavoriteBorder/>}
 					</IconButton>
 					<Button className={clsx(classes.button)}>
-						{buttonStatus(course)}
+						{buttonStatus()}
 					</Button>
 				</CardActions>
 				<LinearProgress
 					variant="determinate"
-					value={(course.activeStep * 100 / course.totalSteps)}
+					value={(activeStep * 100 / totalSteps)}
 				/>
 			</Card>
 		</div>
 	</>
 };
 
-export default CardComponent;
+export default CourseCardComponent;
