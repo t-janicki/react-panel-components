@@ -41,12 +41,11 @@ interface Props {
 
 const CourseCardComponent: React.FC<Props> = ({course}) => {
 	const {
-		id, title, subTitle, description, category, totalPoints,
+		title, subTitle, description, category, totalPoints,
 		earnedPoints, length, totalSteps, activeStep, updated, favorite
 	} = course;
 
 	const classes = useStyles();
-	const theme = useTheme();
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
 	const buttonStatus = () => {
@@ -59,21 +58,6 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 				return 'CONTINUE'
 		}
 	};
-
-	// const cardHeaderBackground = () => {
-	// 	switch (category) {
-	// 		case 'WEB':
-	// 			return red[600];
-	// 		case 'REACT':
-	// 			return indigo[600];
-	// 		case 'SPRING':
-	// 			return green[600];
-	// 		case 'JAVA':
-	// 			return amber[600];
-	// 		default:
-	// 			return grey[600];
-	// 	}
-	// };
 
 	const cardHeaderBackground = (): string => {
 		switch (category) {
@@ -122,10 +106,18 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 				/>
 				<Divider/>
 				<CardContent style={{height: '17vw'}}>
-					<Typography gutterBottom variant="h5" component="h2">
-						{subTitle}
+					<Typography variant="h5" gutterBottom>
+						{title} - {subTitle}
 					</Typography>
-					<Typography>
+					<Typography variant="subtitle2"
+								gutterBottom
+								style={{
+									marginBottom: '1vw',
+									textAlign: "right"
+								}}>
+						{updated}
+					</Typography>
+					<Typography variant="body1" gutterBottom>
 						{description}
 					</Typography>
 				</CardContent>
