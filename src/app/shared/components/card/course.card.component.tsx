@@ -60,18 +60,33 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 		}
 	};
 
-	const cardHeaderBackground = () => {
+	// const cardHeaderBackground = () => {
+	// 	switch (category) {
+	// 		case 'WEB':
+	// 			return red[600];
+	// 		case 'REACT':
+	// 			return indigo[600];
+	// 		case 'SPRING':
+	// 			return green[600];
+	// 		case 'JAVA':
+	// 			return amber[600];
+	// 		default:
+	// 			return grey[600];
+	// 	}
+	// };
+
+	const cardHeaderBackground = (): string => {
 		switch (category) {
 			case 'WEB':
-				return red[600];
+				return 'linear-gradient(40deg, #d32f2f 30%, #ef5350 90%)';
 			case 'REACT':
-				return indigo[600];
+				return 'linear-gradient(40deg, #303f9f 30%, #5c6bc0 90%)';
 			case 'SPRING':
-				return green[600];
+				return 'linear-gradient(40deg, #388e3c 30%, #66bb6a 90%)';
 			case 'JAVA':
-				return amber[600];
+				return 'linear-gradient(40deg, #ffa000 30%, #ffca28 90%)';
 			default:
-				return grey[600];
+				return 'linear-gradient(40deg, #616161 50%, #bdbdbd 90%)';
 		}
 	};
 
@@ -82,6 +97,10 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 	return <>
 		<div>
 			<Card raised elevation={4} className={classes.root}>
+				<div style={{
+					background: cardHeaderBackground(),
+					height: '1vw',
+				}}/>
 				<CardHeader
 					avatar={
 						<Chip
@@ -90,9 +109,8 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 						/>
 					}
 					style={{
-						background: cardHeaderBackground(),
+						background: 'linear-gradient(180deg, #eeeeee 30%, #fafafa 100%)',
 						height: '4vw',
-						color: theme.palette.getContrastText(cardHeaderBackground())
 					}}
 					action={
 						<Chip
@@ -102,6 +120,7 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 						/>
 					}
 				/>
+				<Divider/>
 				<CardContent style={{height: '17vw'}}>
 					<Typography gutterBottom variant="h5" component="h2">
 						{subTitle}

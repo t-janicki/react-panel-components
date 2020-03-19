@@ -30,7 +30,7 @@ const CourseCardLayout: React.FC = () => {
 				alignItems="flex-start"
 			>
 				{courses.map(course => (
-					<Grid item xs={12} sm={12} md={4} key={course.id}>
+					<Grid item xs={4} sm={4} md={4} key={course.id}>
 						<CourseCardComponent course={course}/>
 					</Grid>
 				))}
