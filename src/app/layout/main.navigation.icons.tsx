@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
 	AccountBox,
-	FontDownload, Home,
+	FontDownload, Home, LocalLibrary,
 	Settings,
 	SupervisorAccount,
 	VpnKey
@@ -19,6 +19,8 @@ export const menuIcon = (icon: string) => {
 			return <FontDownload/>;
 		case 'HOME':
 			return <Home/>;
+		case 'BOOK':
+			return <LocalLibrary/>
 		case 'USER':
 			return <AccountBox/>;
 	}

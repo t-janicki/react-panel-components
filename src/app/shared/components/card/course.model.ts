@@ -11,4 +11,5 @@ export interface Course {
 	activeStep: number
 	updated: string
 	favorite: boolean
+	steps: any[]
 }

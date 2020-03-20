@@ -13,6 +13,7 @@ import {
 	TypographyComponent,
 } from "../shared";
 import { PrivateRoute } from "../auth";
+import CourseComponent from "../shared/components/card/course.component";
 
 
 const LayoutContainer: React.FC = () => {
@@ -30,9 +31,9 @@ const LayoutContainer: React.FC = () => {
 					<Route exact path='/home'>
 						<HomeComponent/>
 					</Route>
-					{/*<Route exact path='/card'>*/}
-					{/*	<CourseCardComponent/>*/}
-					{/*</Route>*/}
+					<Route exact path='/course'>
+						<CourseComponent/>
+					</Route>
 					<Route exact path='/card-layout'>
 						<CourseCardLayout/>
 					</Route>

@@ -105,7 +105,7 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 					}
 				/>
 				<Divider/>
-				<CardContent style={{height: '17vw'}}>
+				<CardContent style={{maxHeight: '25vw'}}>
 					<Typography variant="h5" gutterBottom>
 						{title} - {subTitle}
 					</Typography>

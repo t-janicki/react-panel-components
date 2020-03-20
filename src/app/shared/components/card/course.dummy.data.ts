@@ -1,4 +1,5 @@
 import { Course } from "./course.model";
+import { demoSteps } from "./course.dummy.data.steps";
 
 export const courses: Course[] = [
 	{
@@ -11,9 +12,10 @@ export const courses: Course[] = [
 		earnedPoints: 250,
 		length: 30,
 		totalSteps: 11,
-		activeStep: 11,
+		activeStep: 4,
 		updated: 'Jun 28, 2019',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -27,7 +29,8 @@ export const courses: Course[] = [
 		totalSteps: 7,
 		activeStep: 0,
 		updated: 'Feb 22, 2020',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -41,7 +44,8 @@ export const courses: Course[] = [
 		totalSteps: 4,
 		activeStep: 3,
 		updated: 'Jun 1, 2019',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -55,7 +59,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 5,
 		updated: 'Jun 13, 2019',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -69,7 +74,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 0,
 		updated: 'Jun 14, 2019',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -83,7 +89,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 11,
 		updated: 'Jun 17, 2019',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -97,7 +104,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 0,
 		updated: 'Jun 11, 2019',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -111,7 +119,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 4,
 		updated: 'Jun 28, 2017',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -125,7 +134,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 0,
 		updated: 'Jun 23, 2019',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -139,7 +149,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 2,
 		updated: 'Jun 3, 2019',
-		favorite: false
+		favorite: false,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -153,7 +164,8 @@ export const courses: Course[] = [
 		totalSteps: 5,
 		activeStep: 1,
 		updated: 'Jun 18, 2019',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -167,7 +179,8 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 4,
 		updated: 'Jun 28, 2017',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	},
 	{
 		id: '15459251a6d6b397565',
@@ -181,6 +194,7 @@ export const courses: Course[] = [
 		totalSteps: 11,
 		activeStep: 4,
 		updated: 'Jun 28, 2017',
-		favorite: true
+		favorite: true,
+		steps: demoSteps
 	}
 ];
