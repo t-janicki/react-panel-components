@@ -79,14 +79,14 @@ const CourseComponent: React.FC = () => {
 				<div>
 					<div>
 						{activeStep !== 1 && (
-							<Fab className="" color="secondary" onClick={handleBack}>
+							<Fab color="secondary" onClick={handleBack}>
 								{theme.direction === 'ltr' ? <ArrowBack/> : <ArrowForward/>}
 							</Fab>
 						)}
 					</div>
 					<div>
 						{activeStep < course.steps.length ? (
-							<Fab className="" color="secondary" onClick={handleNext}>
+							<Fab color="secondary" onClick={handleNext}>
 								{theme.direction === 'ltr' ? <ArrowForward/> : <ArrowBack/>}
 							</Fab>
 						) : (
@@ -96,8 +96,7 @@ const CourseComponent: React.FC = () => {
 						)}
 					</div>
 				</div>
-				{
-					course && (
+				{course && (
 						<Stepper classes={{ root: 'bg-transparent' }} activeStep={activeStep - 1} orientation="vertical">
 							{course.steps.map((step, index) => {
 								return (
