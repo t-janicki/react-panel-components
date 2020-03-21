@@ -25,7 +25,7 @@ const CourseComponent: React.FC = () => {
 	const course = courses[0];
 	const theme = useTheme();
 	const [activeStep, setActiveStep] = useState(0);
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 	const classes = useCourseStyles();
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { CourseCardComponent, PaginationComponent } from "../../index";
-import {courses} from './course.dummy.data';
+import { courses } from './course.dummy.data';
+import CourseSearchForm from "./course.search.form";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -25,25 +26,27 @@ const useStyles = makeStyles((theme: Theme) =>
 const CourseCardLayout: React.FC = () => {
 	const classes = useStyles();
 
-	return (
-		<div className={classes.root}>
-			<Grid
-				container
-				spacing={2}
-				direction="row"
-				justify="flex-start"
-				alignItems="flex-start"
-			>
-				{courses.map(course => (
-					<Grid item xs={4} sm={4} md={4} key={course.id}>
-						<CourseCardComponent course={course}/>
+	return (<>
+			<Grid container className={classes.root} spacing={2}>
+				<Grid item xs={12}>
+					<Grid container alignItems="flex-start" justify="center" spacing={4}>
+						<Grid item>
+							<CourseSearchForm/>
+						</Grid>
 					</Grid>
-				))}
+					<Grid container alignItems="flex-start" justify="center" spacing={4}>
+						{courses.map(course =>
+							<Grid key={course.id} item>
+								<CourseCardComponent course={course}/>
+							</Grid>
+						)}
+					</Grid>
+				</Grid>
 			</Grid>
 			<Grid container justify="center">
 				<PaginationComponent totalPages={2}/>
 			</Grid>
-		</div>
+		</>
 	);
 };
 
