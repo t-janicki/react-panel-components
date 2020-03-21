@@ -1,8 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 const drawerWidth = 240;
 
-const useLayoutStyles = makeStyles(theme => ({
+const useLayoutStyles = makeStyles((theme: Theme) => createStyles({
 	root: {
 		flexGrow: 1,
 		width: '100%',
@@ -13,6 +13,8 @@ const useLayoutStyles = makeStyles(theme => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
+		//to delete?
+		zIndex: theme.zIndex.drawer + 1,
 	},
 	appBarShift: {
 		width: `calc(100% - ${drawerWidth}px)`,
@@ -27,21 +29,6 @@ const useLayoutStyles = makeStyles(theme => ({
 	},
 	hide: {
 		display: 'none',
-	},
-	drawer: {
-		width: drawerWidth,
-		flexShrink: 0,
-	},
-	drawerPaper: {
-		width: drawerWidth,
-	},
-	drawerHeader: {
-		display: 'flex',
-		alignItems: 'center',
-		padding: theme.spacing(0, 1),
-		// necessary for content to be below app bar
-		...theme.mixins.toolbar,
-		justifyContent: 'flex-start',
 	},
 	content: {
 		flexGrow: 1,
@@ -59,6 +46,12 @@ const useLayoutStyles = makeStyles(theme => ({
 		}),
 		marginRight: 0,
 	},
+	drawer: {
+		width: drawerWidth,
+		flexShrink: 0,
+	},
+	// necessary for content to be below app bar
+	toolbar: theme.mixins.toolbar,
 }));
 
 export default useLayoutStyles;

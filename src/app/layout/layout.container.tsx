@@ -69,7 +69,7 @@ const LayoutContainer: React.FC = () => {
 	return <>
 		<div className={classes.root}>
 			<CssBaseline/>
-			<AppBar position="static" color="default">
+			<AppBar position="fixed" color="default" className={classes.appBar}>
 				<Toolbar>
 					<Tabs
 						value={value}
@@ -101,15 +101,6 @@ const LayoutContainer: React.FC = () => {
 						<Tab label="USER" value="/user" icon={<SupervisorAccount/>}
 							 component={Link} to={routes[6]} {...a11yProps(6)} />
 					</Tabs>
-					<IconButton
-						color="inherit"
-						aria-label="open drawer"
-						edge="end"
-						onClick={handleDrawerOpen}
-						className={clsx(open && classes.hide)}
-					>
-						<MenuIcon/>
-					</IconButton>
 				</Toolbar>
 			</AppBar>
 			<main
@@ -137,39 +128,6 @@ const LayoutContainer: React.FC = () => {
 					<PrivateRoute path={routes[6]} roles={[Role.User, Role.Admin]} Component={HomeComponent}/>
 				</Switch>
 			</main>
-			<Drawer
-				className={classes.drawer}
-				variant="persistent"
-				anchor="right"
-				open={open}
-				classes={{
-					paper: classes.drawerPaper,
-				}}
-			>
-				<div className={classes.drawerHeader}>
-					<IconButton onClick={handleDrawerClose}>
-						{theme.direction === 'rtl' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-					</IconButton>
-				</div>
-				<Divider/>
-				<List>
-					{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-							<ListItemText primary={text}/>
-						</ListItem>
-					))}
-				</List>
-				<Divider/>
-				<List>
-					{['All mail', 'Trash', 'Spam'].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-							<ListItemText primary={text}/>
-						</ListItem>
-					))}
-				</List>
-			</Drawer>
 		</div>
 	</>
 };
