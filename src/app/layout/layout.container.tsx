@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useTheme } from "@material-ui/core/styles";
 import { Link, Route, Switch } from "react-router-dom";
 import { Role } from "../auth/model/role";
 import useLayoutStyles from "./layout.styles";
@@ -13,24 +12,18 @@ import {
 import { PrivateRoute } from "../auth";
 import CourseComponent from "../shared/components/card/course.component";
 import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { FontDownload, Home, LocalLibrary, Settings, SupervisorAccount } from "@material-ui/icons";
+import {
+	FontDownload,
+	Home,
+	LocalLibrary,
+	Settings,
+	SupervisorAccount
+} from "@material-ui/icons";
+import { Grid } from "@material-ui/core";
 
 function a11yProps(index: any) {
 	return {
@@ -41,16 +34,6 @@ function a11yProps(index: any) {
 
 const LayoutContainer: React.FC = () => {
 	const classes = useLayoutStyles();
-	const theme = useTheme();
-	const [open, setOpen] = React.useState(false);
-
-	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
-
-	const handleDrawerClose = () => {
-		setOpen(false);
-	};
 
 	const [value, setValue] = React.useState(0);
 
@@ -68,9 +51,9 @@ const LayoutContainer: React.FC = () => {
 	];
 	return <>
 		<div className={classes.root}>
-			<CssBaseline/>
 			<AppBar position="fixed" color="default" className={classes.appBar}>
 				<Toolbar>
+					<Grid container justify={"space-evenly"}>
 					<Tabs
 						value={value}
 						onChange={handleChange}
@@ -101,14 +84,11 @@ const LayoutContainer: React.FC = () => {
 						<Tab label="USER" value="/user" icon={<SupervisorAccount/>}
 							 component={Link} to={routes[6]} {...a11yProps(6)} />
 					</Tabs>
+					</Grid>
 				</Toolbar>
 			</AppBar>
 			<div className={classes.toolbar} />
-			<main
-				className={clsx(classes.content, {
-					[classes.contentShift]: open,
-				})}
-			>
+			<main className={clsx(classes.content)}>
 				<Switch>
 					<Route exact path={routes[0]}>
 						<HomeComponent/>
