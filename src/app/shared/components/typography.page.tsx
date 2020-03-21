@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 const TypographyPage: React.FC = () => {
 
 	return <>
-		<Grid container spacing={4}>
+		<Grid>
 			<Grid item xs={12} md={6}>
 				<div>
 					<Typography variant="h1">

@@ -8,11 +8,16 @@ const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
 		root: {
 			flexGrow: 1,
+			padding: theme.spacing(0, 3),
 		},
 		paper: {
 			padding: theme.spacing(2),
 			textAlign: 'center',
 			color: theme.palette.text.secondary,
+		},
+		content: {
+			flexGrow: 1,
+			padding: theme.spacing(3),
 		},
 	}),
 );

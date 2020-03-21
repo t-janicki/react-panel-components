@@ -6,14 +6,14 @@ const useLayoutStyles = makeStyles((theme: Theme) => createStyles({
 	root: {
 		flexGrow: 1,
 		width: '100%',
-		// backgroundColor: theme.palette.background.paper,
+		//main content background
+		backgroundColor: theme.palette.background.paper,
 	},
 	appBar: {
 		transition: theme.transitions.create(['margin', 'width'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
-		//to delete?
 		zIndex: theme.zIndex.drawer + 1,
 	},
 	appBarShift: {
@@ -37,7 +37,6 @@ const useLayoutStyles = makeStyles((theme: Theme) => createStyles({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
-		marginRight: -drawerWidth,
 	},
 	contentShift: {
 		transition: theme.transitions.create('margin', {

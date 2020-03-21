@@ -69,11 +69,14 @@ const useStyles = makeStyles(theme => createStyles({
 		display: 'flex',
 		alignItems: 'center',
 		padding: theme.spacing(0, 1),
-		// necessary for content to be below app bar
-		toolbar: theme.mixins.toolbar,
 		justifyContent: 'flex-start',
 		height: 71
 	},
+	content: {
+		flexGrow: 1,
+		padding: theme.spacing(3),
+	},
+	// necessary for content to be below app bar
 	toolbar: theme.mixins.toolbar,
 }));
 
@@ -81,8 +84,8 @@ const CourseComponent: React.FC = () => {
 	//dummy first course
 	const course = courses[0];
 	const theme = useTheme();
-	const [activeStep, setActiveStep] = useState(4);
-	const [open, setOpen] = React.useState(true);
+	const [activeStep, setActiveStep] = useState(0);
+	const [open, setOpen] = React.useState(false);
 
 	const routeParams = useParams();
 	const classes = useStyles();
@@ -184,6 +187,7 @@ const CourseComponent: React.FC = () => {
 					paper: classes.drawerPaper,
 				}}
 			>
+				<div className={classes.toolbar} />
 				<div className={classes.drawerHeader}>
 					<IconButton onClick={handleDrawerClose}>
 						{theme.direction === 'rtl' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}

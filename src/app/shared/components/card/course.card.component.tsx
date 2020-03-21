@@ -31,7 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
 		},
 		extendedIcon: {
 			marginRight: theme.spacing(1),
-		}
+		},
+		// content: {
+		// 	flexGrow: 1,
+		// 	padding: theme.spacing(3),
+		// },
 	}),
 );
 

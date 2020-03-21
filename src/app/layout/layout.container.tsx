@@ -103,6 +103,7 @@ const LayoutContainer: React.FC = () => {
 					</Tabs>
 				</Toolbar>
 			</AppBar>
+			<div className={classes.toolbar} />
 			<main
 				className={clsx(classes.content, {
 					[classes.contentShift]: open,
