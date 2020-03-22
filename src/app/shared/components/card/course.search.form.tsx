@@ -13,15 +13,14 @@ import { useState } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
-		formControl: {
-			margin: theme.spacing(1),
-			minWidth: 150,
-			lineHeight: 2
-
-		},
 		root: {
 			display: 'flex',
 			flexWrap: 'wrap',
+		},
+		form: {
+			margin: theme.spacing(1),
+			minWidth: 150,
+			lineHeight: 2
 		},
 		textField: {
 			marginLeft: theme.spacing(1),
@@ -56,7 +55,7 @@ const CourseSearchForm = () => {
 	];
 
 	const onSubmit = (values: FormValues) => {
-		console.log(values)
+		console.log(`form values: ${values}`)
 	};
 
 	return (<>
@@ -76,7 +75,7 @@ const CourseSearchForm = () => {
 						handleSubmit(e)
 					}}>
 						<TextField
-							className={classes.formControl}
+							className={classes.form}
 							variant="outlined"
 							label="Tytuł"
 							size="small"
@@ -85,7 +84,7 @@ const CourseSearchForm = () => {
 							onBlur={handleBlur}
 							value={values.title}
 						/>
-						<FormControl size="small" variant="outlined" className={classes.formControl}>
+						<FormControl size="small" variant="outlined" className={classes.form}>
 							<InputLabel>Kategoria</InputLabel>
 							<Select
 								name="category"
@@ -102,7 +101,7 @@ const CourseSearchForm = () => {
 							</Select>
 						</FormControl>
 						{isFavorite ?
-							<Button className={classes.formControl}
+							<Button className={classes.form}
 									size="medium"
 									variant="outlined"
 									onClick={() => {
@@ -114,7 +113,7 @@ const CourseSearchForm = () => {
 								ULUBIONE
 							</Button>
 							:
-							<Button className={classes.formControl}
+							<Button className={classes.form}
 									size="medium"
 									variant="outlined"
 									onClick={() => {
@@ -125,7 +124,7 @@ const CourseSearchForm = () => {
 									}>
 								ULUBIONE
 							</Button>}
-						<Button className={classes.formControl}
+						<Button className={classes.form}
 								variant="outlined"
 								size="medium"
 								startIcon={<Search/>}
@@ -133,7 +132,7 @@ const CourseSearchForm = () => {
 						>
 							SZUKAJ
 						</Button>
-						<Button className={classes.formControl}
+						<Button className={classes.form}
 								variant="outlined"
 								size="medium"
 								onClick={() => {

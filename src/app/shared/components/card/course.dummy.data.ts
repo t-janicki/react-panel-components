@@ -3,7 +3,7 @@ import { demoSteps } from "./course.dummy.data.steps";
 
 export const courses: Course[] = [
 	{
-		id: '15459251a6d6b397565',
+		id: '1',
 		title: 'Spring',
 		subTitle: 'REST API',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -18,7 +18,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '2',
 		title: 'Spring',
 		subTitle: 'SECURITY',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -33,7 +33,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '3',
 		title: 'Java',
 		subTitle: 'Java Basics',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -48,7 +48,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '4',
 		title: 'Spring',
 		subTitle: 'OAuth2',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -63,7 +63,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '5',
 		title: 'Java',
 		subTitle: 'Java 8',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -78,7 +78,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '6',
 		title: 'React',
 		subTitle: 'React hooks',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -93,7 +93,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '7',
 		title: 'Typescript',
 		subTitle: 'Typescript',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -108,7 +108,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '8',
 		title: 'Spring',
 		subTitle: 'REST API',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -123,7 +123,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '9',
 		title: 'React',
 		subTitle: 'Context',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -138,7 +138,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '10',
 		title: 'Spring',
 		subTitle: 'REST API',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -153,7 +153,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '11',
 		title: 'Spring',
 		subTitle: 'Injection control',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -168,7 +168,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '12',
 		title: 'Spring',
 		subTitle: 'REST API',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -183,7 +183,7 @@ export const courses: Course[] = [
 		steps: demoSteps
 	},
 	{
-		id: '15459251a6d6b397565',
+		id: '13',
 		title: 'Spring',
 		subTitle: 'REST API',
 		description: 'Commits that need to be pushed lorem ipsum dolor sit amet, consectetur adipiscing elit.',

@@ -4,6 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import { CourseCardComponent, PaginationComponent } from "../../index";
 import { courses } from './course.dummy.data';
 import CourseSearchForm from "./course.search.form";
+import CourseComponent from "./course.component";
+import { Route } from "react-router-dom";
+import { Switch } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({

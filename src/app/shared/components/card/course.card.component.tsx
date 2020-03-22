@@ -23,6 +23,7 @@ import {
 	useState
 } from "react";
 import { Course } from "./course.model";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
@@ -52,7 +53,7 @@ interface Props {
 
 const CourseCardComponent: React.FC<Props> = ({course}) => {
 	const {
-		title, subTitle, description, category, totalPoints,
+		id, title, subTitle, description, category, totalPoints,
 		earnedPoints, length, totalSteps, activeStep, updated, favorite
 	} = course;
 
@@ -137,7 +138,7 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 					onClick={() => setIsFavorite(!isFavorite)}>
 					{isFavorite ? <FavoriteIcon/> : <FavoriteBorder/>}
 				</IconButton>
-				<Button className={clsx(classes.button)}>
+				<Button className={clsx(classes.button)} component={Link} to={`/courses/${id}`}>
 					{buttonStatus()}
 				</Button>
 			</CardActions>
