@@ -1,8 +1,4 @@
 import * as React from "react";
-import UserStore from '../../user/store/user.store'
-import { useState } from "react";
-import { User } from "../../user/model/user.model";
-import { Button } from "@material-ui/core";
 
 const PreferencesComponent: React.FC = () => {
     // const [currentUser, setCurrentUser] = useState();

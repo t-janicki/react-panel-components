@@ -23,7 +23,6 @@ const TypographyPage: React.FC = () => {
 					<Typography variant="h5">
 						h5. Heading
 					</Typography>
-					<Typography variant="h6">h6. Heading</Typography>
 				</div>
 			</Grid>
 		</Grid>

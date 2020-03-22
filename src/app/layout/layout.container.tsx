@@ -15,9 +15,9 @@ import {
 
 const LayoutContainer: React.FC = () => {
 	const classes = useLayoutStyles();
-	const [value, setValue] = useState(0);
+	const [value, setValue] = useState('/home');
 
-	const handleChange = (event: ChangeEvent<{}>, newValue: number) => {
+	const handleChange = (event: ChangeEvent<{}>, newValue: string) => {
 		setValue(newValue);
 	};
 

@@ -55,21 +55,22 @@ const CourseSearchForm = () => {
 	];
 
 	const onSubmit = (values: FormValues) => {
-		console.log(`form values: ${values}`)
+		console.log(`form values: `);
+		console.log(values);
 	};
 
 	return (<>
 			<Formik<FormValues>
 				initialValues={initialValues}
-				onSubmit={onSubmit}
-				render={({
-							 values,
-							 resetForm,
-							 handleChange,
-							 handleBlur,
-							 handleSubmit,
-							 setFieldValue
-						 }) => (
+				onSubmit={onSubmit}>
+				{({
+					  values,
+					  resetForm,
+					  handleChange,
+					  handleBlur,
+					  handleSubmit,
+					  setFieldValue
+				  }) => (
 					<form onSubmit={e => {
 						e.stopPropagation();
 						handleSubmit(e)
@@ -93,7 +94,7 @@ const CourseSearchForm = () => {
 								label="Kategoria"
 							>
 								<MenuItem value="">
-									<em>Brak</em>
+									<em>BRAK</em>
 								</MenuItem>
 								{categories.map(category =>
 									<MenuItem key={category} value={category}>{category}</MenuItem>
@@ -145,8 +146,7 @@ const CourseSearchForm = () => {
 						</Button>
 					</form>
 				)}
-			/>
-
+			</Formik>
 		</>
 	);
 };

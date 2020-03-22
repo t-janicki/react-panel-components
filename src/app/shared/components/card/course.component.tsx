@@ -30,7 +30,7 @@ const CourseComponent: React.FC = () => {
 	const classes = useCourseStyles();
 
 	const handleChangeActiveStep = (index: number) => {
-		setActiveStep(index + 1);
+		setActiveStep(index);
 	};
 
 	const handleNext = () => {
@@ -70,13 +70,15 @@ const CourseComponent: React.FC = () => {
 					<Grid item xs>
 						<SwipeableViews
 							className="overflow-hidden"
-							index={activeStep - 1}
+							index={activeStep}
 							enableMouseEvents
 							onChangeIndex={handleChangeActiveStep}
 						>
-							{course.steps.map((step, index) => (
-									<div dangerouslySetInnerHTML={{__html: step.content}}
-										 dir={theme.direction}/>
+							{course.steps.map(step => (
+									<div
+										key={step.id}
+										dangerouslySetInnerHTML={{__html: step.content}}
+										dir={theme.direction}/>
 							))}
 						</SwipeableViews>
 					</Grid>
@@ -126,7 +128,7 @@ const CourseComponent: React.FC = () => {
 				</div>
 				<Divider/>
 				{course && (
-					<Stepper classes={{root: 'bg-transparent'}} activeStep={activeStep - 1} orientation="vertical">
+					<Stepper classes={{root: 'bg-transparent'}} activeStep={activeStep} orientation="vertical">
 						{course.steps.map((step, index) => {
 							return (
 								<Step key={step.id} onClick={() => handleChangeActiveStep(index)}>

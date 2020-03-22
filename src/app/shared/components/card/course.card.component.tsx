@@ -122,9 +122,9 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 								marginBottom: '1vw',
 								textAlign: "right"
 							}}>
-					<Typography variant="subtitle2">
+					<div>
 						{`Ostatnia aktualizacja`}
-					</Typography>
+					</div>
 					{`${updated}`}
 				</Typography>
 				<Typography variant="body1" gutterBottom>

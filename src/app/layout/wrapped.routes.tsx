@@ -11,6 +11,7 @@ const WrappedRoutes: React.FC = () => {
 	return <>
 		{navigationRoutes.map((route) =>
 			<Route
+				key={route.path}
 				exact={route.exact}
 				path={route.path}
 			>
