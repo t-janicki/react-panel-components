@@ -17,8 +17,9 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Button, Grid } from "@material-ui/core";
+import { Button, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Grid } from "@material-ui/core";
 import { useCourseStyles } from "./course.styles";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const CourseComponent: React.FC = () => {
 	//dummy first course
@@ -34,11 +35,13 @@ const CourseComponent: React.FC = () => {
 	};
 
 	const handleNext = () => {
-		setActiveStep(activeStep + 1)
+		setActiveStep(activeStep + 1);
+		window.scrollTo(0,0);
 	};
 
 	const handleBack = () => {
-		setActiveStep(activeStep - 1)
+		setActiveStep(activeStep - 1);
+		window.scrollTo(0,0);
 	};
 
 	const handleDrawerOpen = () => {

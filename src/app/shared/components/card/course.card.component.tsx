@@ -94,7 +94,7 @@ const CourseCardComponent: React.FC<Props> = ({course}) => {
 		<Card raised elevation={4} className={classes.root}>
 			<div style={{
 				background: cardHeaderBackground(),
-				height: '1vw',
+				height: '0.5vw',
 			}}/>
 			<CardHeader className={classes.cardHeader}
 				avatar={

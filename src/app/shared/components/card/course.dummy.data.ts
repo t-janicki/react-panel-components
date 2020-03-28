@@ -11,8 +11,8 @@ export const courses: Course[] = [
 		totalPoints: 500,
 		earnedPoints: 250,
 		length: 30,
-		totalSteps: 11,
-		activeStep: 4,
+		totalSteps: 10,
+		activeStep: 0,
 		updated: 'Jun 28, 2019',
 		favorite: true,
 		steps: demoSteps

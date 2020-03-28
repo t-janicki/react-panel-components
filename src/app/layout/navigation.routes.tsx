@@ -13,6 +13,7 @@ import {
 	PreferencesComponent,
 	TypographyComponent
 } from "../shared/index";
+import ModuleList from "../shared/components/module/module.list";
 
 const navigationRoutes = [
 	{
@@ -41,6 +42,13 @@ const navigationRoutes = [
 		label: 'PREFERENCES',
 		icon: <Settings/>,
 		component: <PreferencesComponent/>,
+		exact: true
+	},
+	{
+		path: '/modules',
+		label: 'Modules',
+		icon: <LocalLibrary/>,
+		component: <ModuleList/>,
 		exact: true
 	},
 	{

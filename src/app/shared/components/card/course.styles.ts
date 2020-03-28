@@ -23,6 +23,10 @@ export const useCourseStyles = makeStyles(theme => createStyles({
 			opacity: 1
 		}
 	},
+	heading: {
+		fontSize: theme.typography.pxToRem(15),
+		fontWeight: theme.typography.fontWeightRegular,
+	},
 	fabBackgroundColor: {
 		backgroundColor: '#f5f5f5',
 	},
