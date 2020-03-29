@@ -11,12 +11,12 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {
-	Button,
-	LinearProgress,
 	Paper,
 	SnackbarContent
 } from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
+import ModuleProgressBar from "./module.progress.bar";
+import ModuleButton from "./module.button";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -90,17 +90,12 @@ const ModuleList: React.FC = () => {
 											marginTop: '3px',
 										}}
 										message={<Typography>
-											<LockOpen style={{marginRight: '20px'}}/>
+											{/*<LockOpen style={{marginRight: '20px'}}/>*/}
 											'I love candy. I love cookies. I love cupcakes.'
 										</Typography>}
-										action={<Button variant="outlined" color='primary'>
-											COMPLETED
-										</Button>}
+										action={<ModuleButton type='completed'/>}
 									/>
-									<LinearProgress
-										variant="determinate"
-										value={(11 * 100 / 11)}
-									/>
+									<ModuleProgressBar type='completed' activeStep={11} totalSteps={11}/>
 									<SnackbarContent
 										style={{
 											background: 'linear-gradient(40deg, #f5f5f5 10%, #ffffff 90%)',
@@ -109,17 +104,12 @@ const ModuleList: React.FC = () => {
 											marginTop: '3px'
 										}}
 										message={<Typography>
-											<LockOpen style={{marginRight: '20px'}}/>
+											{/*<LockOpen style={{marginRight: '20px'}}/>*/}
 											'I love candy. I love cookies. I love cupcakes.'
 										</Typography>}
-										action={<Button variant="outlined" color='primary'>
-											CONTINUE
-										</Button>}
+										action={<ModuleButton type='continue'/>}
 									/>
-									<LinearProgress
-										variant="determinate"
-										value={(5 * 100 / 11)}
-									/>
+									<ModuleProgressBar type='continue' activeStep={3} totalSteps={11}/>
 									<SnackbarContent
 										style={{
 											background: 'linear-gradient(40deg, #f5f5f5 10%, #ffffff 90%)',
@@ -127,17 +117,12 @@ const ModuleList: React.FC = () => {
 											marginTop: '3px'
 										}}
 										message={<Typography>
-											<Lock style={{marginRight: '20px'}}/>
+											{/*<Lock style={{marginRight: '20px'}}/>*/}
 											'I love candy. I love cookies. I love cupcakes.'
 										</Typography>}
-										action={<Button variant="outlined" color='primary' disabled>
-											LOCKED
-										</Button>}
+										action={<ModuleButton type='locked'/>}
 									/>
-									<LinearProgress
-										variant="determinate"
-										value={(0 * 100 / 11)}
-									/>
+									<ModuleProgressBar type='locked' activeStep={0} totalSteps={11}/>
 								</TabPanel>
 								<TabPanel value={value} index={1}>
 									Item Two
